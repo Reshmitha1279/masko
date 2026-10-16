@@ -1,0 +1,877 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Reshmitha Paricha Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500..800&family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:wght@400;500;600&display=swap">
+<style>
+:root{
+  /* Layout: a reviewer's working paper made personal. Left-aligned, ruled rows, mono labels for data, ticks that draw themselves. */
+  --bg:#F3F5F8; --surface:#FFFFFF; --ink:#0E1A2B; --muted:#586376; --line:#D3DAE4; --line-soft:#E6EAF0;
+  --accent:#1B4FD6; --accent-soft:#E4EBFC; --on-accent:#FFFFFF; --mark:#FFE27A;
+  --ok:#14764A; --ok-bg:#DDF3E8; --warn:#8F5B00; --warn-bg:#FBEBC8; --bad:#B02330; --bad-bg:#FADDE0;
+  --font-display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --font-body:"Public Sans","Segoe UI",system-ui,sans-serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0C121B; --surface:#131B27; --ink:#E8EDF4; --muted:#9AA6B8; --line:#263244; --line-soft:#1D2838;
+    --accent:#7BA2FF; --accent-soft:#1B2A4A; --on-accent:#0C121B; --mark:#5A4A0C;
+    --ok:#4CC58A; --ok-bg:#12301F; --warn:#E0A53A; --warn-bg:#33270C; --bad:#FF7B84; --bad-bg:#3A1519;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0C121B; --surface:#131B27; --ink:#E8EDF4; --muted:#9AA6B8; --line:#263244; --line-soft:#1D2838;
+  --accent:#7BA2FF; --accent-soft:#1B2A4A; --on-accent:#0C121B; --mark:#5A4A0C;
+  --ok:#4CC58A; --ok-bg:#12301F; --warn:#E0A53A; --warn-bg:#33270C; --bad:#FF7B84; --bad-bg:#3A1519;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:var(--font-body); font-size:16px; line-height:1.6;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));
+  padding-right:max(16px, env(safe-area-inset-right, 0px));
+  padding-block:0 56px;
+  overflow-x:hidden;
+}
+.wrap{max-width:1040px; margin:0 auto}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+h1,h2,h3{font-family:var(--font-display); line-height:1.1; margin:0; text-wrap:balance; letter-spacing:-0.01em}
+p{margin:0}
+.label{font-family:var(--font-mono); font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted)}
+.tag{font-family:var(--font-mono); font-size:12px; color:var(--muted)}
+
+/* scroll progress */
+.progress{position:fixed; left:0; right:0; top:env(safe-area-inset-top, 0px); height:3px; z-index:20; background:transparent}
+.progress i{display:block; height:100%; width:100%; background:var(--accent); transform-origin:left; transform:scaleX(0)}
+
+/* header */
+.top{display:flex; flex-wrap:wrap; gap:12px 28px; align-items:center; justify-content:space-between; padding:22px 0; border-bottom:1px solid var(--line)}
+.brand{font-family:var(--font-display); font-weight:700; font-size:18px}
+.nav{display:flex; flex-wrap:wrap; gap:6px 20px}
+.nav a{color:var(--muted); text-decoration:none; font-size:14px; font-weight:500; background:linear-gradient(var(--accent),var(--accent)) left bottom/0 2px no-repeat; transition:background-size .25s, color .2s; padding-bottom:2px}
+.nav a:hover{color:var(--ink); background-size:100% 2px}
+
+/* hero */
+.hero{display:grid; grid-template-columns:minmax(0,1.5fr) minmax(0,1fr); gap:44px; padding:56px 0 52px; align-items:start}
+.hero h1{font-size:clamp(44px,8vw,88px); font-weight:800; line-height:.98}
+.hero h1 span{display:block}
+.hero h1 .hl{background:linear-gradient(var(--mark),var(--mark)) 0 88%/0 .32em no-repeat; animation:hl 1s .9s cubic-bezier(.3,.7,.2,1) forwards}
+.rotor{margin-top:24px; font-family:var(--font-display); font-size:clamp(22px,3.2vw,32px); font-weight:600; min-height:1.3em; color:var(--accent)}
+.rotor #rot{display:inline-block; transition:opacity .35s, transform .35s}
+.rotor #rot.out{opacity:0; transform:translateY(-10px)}
+.rotor .caret{display:inline-block; width:3px; height:.95em; background:var(--accent); margin-left:6px; vertical-align:-.1em; animation:blink 1s steps(2) infinite}
+.hero .sub{margin-top:18px; color:var(--muted); max-width:36em}
+.actions{display:flex; flex-wrap:wrap; gap:10px; margin-top:28px}
+.btn{font:inherit; font-weight:600; font-size:15px; padding:11px 18px; border-radius:6px; border:1px solid var(--ink); background:var(--ink); color:var(--bg); text-decoration:none; cursor:pointer; display:inline-block; transition:transform .15s, border-color .15s}
+.btn:hover{transform:translateY(-2px); border-color:var(--accent)}
+.btn.ghost{background:transparent; color:var(--ink); border-color:var(--line)}
+.btn.small{padding:7px 12px; font-size:13px}
+
+.paper{background:var(--surface); border:1px solid var(--line); border-radius:6px; padding:20px; position:relative; overflow:hidden}
+.paper::after{content:""; position:absolute; left:0; right:0; top:0; height:56px; background:linear-gradient(to bottom, transparent, var(--accent-soft), transparent); opacity:.9; animation:scan 5s 1.4s ease-in-out infinite; pointer-events:none}
+.facts{list-style:none; margin:14px 0 0; padding:0; display:grid; gap:0}
+.facts li{display:grid; grid-template-columns:22px minmax(0,1fr); gap:10px; padding:11px 0; border-top:1px solid var(--line-soft); align-items:start}
+.facts li:first-child{border-top:0}
+.facts .k{font-family:var(--font-mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); display:block}
+.facts .v{font-size:15px; display:block}
+.tick{width:20px; height:20px; margin-top:2px}
+.tick circle{fill:var(--ok-bg)}
+.tick path{fill:none; stroke:var(--ok); stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round; stroke-dasharray:22; animation:draw .5s cubic-bezier(.3,.7,.2,1) backwards; animation-delay:var(--d)}
+.paper .stamp{margin-top:6px; font-family:var(--font-mono); font-size:11px; color:var(--muted)}
+
+/* entrance */
+.rise{animation:rise .8s cubic-bezier(.2,.7,.2,1) backwards; animation-delay:var(--d,0s)}
+@keyframes rise{from{opacity:0; transform:translateY(20px)}}
+@keyframes draw{from{stroke-dashoffset:22}}
+@keyframes hl{to{background-size:100% .32em}}
+@keyframes blink{50%{opacity:0}}
+@keyframes scan{0%{transform:translateY(-70px)} 60%,100%{transform:translateY(520px)}}
+@keyframes slide{to{transform:translateX(-50%)}}
+@keyframes slideR{from{transform:translateX(-50%)} to{transform:translateX(0)}}
+
+/* ticker */
+.marq{overflow:hidden; border-block:1px solid var(--line); padding:14px 0; display:grid; gap:10px; -webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent); mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.track{display:flex; gap:10px; width:max-content; animation:slide 46s linear infinite}
+.track.rev{animation:slideR 54s linear infinite}
+.marq:hover .track{animation-play-state:paused}
+.track span{font-family:var(--font-mono); font-size:13px; padding:5px 12px; border:1px solid var(--line); border-radius:4px; background:var(--surface); white-space:nowrap}
+
+/* sections */
+section{padding:56px 0; border-top:1px solid var(--line)}
+.marq + section, .hero + .marq{border-top:0}
+.sec-head{display:grid; gap:10px; margin-bottom:30px; max-width:46em}
+.sec-head h2{font-size:clamp(28px,4vw,42px); font-weight:700}
+.sec-head p{color:var(--muted)}
+.rv-pre{opacity:.35; transform:translateY(16px)}
+.rv{transition:opacity .6s ease, transform .6s cubic-bezier(.2,.7,.2,1)}
+
+/* about */
+.about{display:grid; grid-template-columns:minmax(0,1.3fr) minmax(0,1fr); gap:40px; align-items:start}
+.about .story{display:grid; gap:16px; font-size:17px}
+.about .story p{max-width:36em}
+.stats{display:grid; grid-template-columns:1fr 1fr; gap:0; border:1px solid var(--line); border-radius:6px; background:var(--surface)}
+.stat{padding:22px 20px; border-top:1px solid var(--line-soft); border-left:1px solid var(--line-soft)}
+.stat:nth-child(-n+2){border-top:0}
+.stat:nth-child(odd){border-left:0}
+.stat b{display:block; font-family:var(--font-display); font-size:clamp(34px,5vw,48px); font-weight:800; line-height:1; font-variant-numeric:tabular-nums}
+.stat span{display:block; margin-top:6px; font-size:13px; color:var(--muted)}
+
+/* skills explorer */
+.skills{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.1fr); gap:28px; align-items:start}
+.sk-btns{display:flex; flex-wrap:wrap; gap:8px}
+.sk{font:inherit; font-size:14px; font-weight:500; padding:8px 14px; border-radius:999px; border:1px solid var(--line); background:var(--surface); color:var(--ink); cursor:pointer; transition:transform .15s, background .15s, border-color .15s}
+.sk:hover{transform:translateY(-2px); border-color:var(--accent)}
+.sk[aria-pressed="true"]{background:var(--accent); color:var(--on-accent); border-color:var(--accent)}
+.sk-out{background:var(--surface); border:1px solid var(--line); border-radius:6px; padding:22px; min-height:200px; position:sticky; top:16px}
+.sk-out h3{font-size:24px; font-weight:700; margin:6px 0 14px}
+.sk-out ul{list-style:none; margin:0; padding:0; display:grid; gap:10px}
+.sk-out li{padding-left:22px; position:relative; color:var(--muted); font-size:15px; animation:rise .45s cubic-bezier(.2,.7,.2,1) backwards}
+.sk-out li::before{content:""; position:absolute; left:2px; top:.55em; width:9px; height:9px; border-radius:50%; background:var(--accent)}
+.sk-out li:nth-child(2){animation-delay:.07s} .sk-out li:nth-child(3){animation-delay:.14s} .sk-out li:nth-child(4){animation-delay:.21s}
+
+/* timeline */
+.tl{position:relative; margin-left:6px; padding-left:34px; display:grid; gap:0}
+.tl::before{content:""; position:absolute; left:6px; top:6px; bottom:6px; width:2px; background:var(--line)}
+.tl-fill{position:absolute; left:6px; top:6px; width:2px; height:calc(100% - 12px); background:var(--accent); transform-origin:top; transform:scaleY(1)}
+.ti{position:relative; padding:0 0 28px; display:grid; gap:2px; max-width:44em}
+.ti:last-child{padding-bottom:0}
+.ti::before{content:""; position:absolute; left:-34px; top:5px; width:14px; height:14px; border-radius:50%; background:var(--accent); border:3px solid var(--bg); box-shadow:0 0 0 2px var(--accent); transition:background .4s, box-shadow .4s}
+.ti.off::before{background:var(--bg); box-shadow:0 0 0 2px var(--line)}
+.ti .when{font-family:var(--font-mono); font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:var(--muted)}
+.ti h3{font-size:20px; font-weight:700}
+.ti p{color:var(--muted); font-size:15px}
+.ti.milestone h3{color:var(--accent)}
+
+/* cards */
+.cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr)); gap:16px}
+.card{background:var(--surface); border:1px solid var(--line); border-radius:6px; padding:22px; display:flex; flex-direction:column; gap:12px; min-width:0; transition:transform .25s, border-color .25s, box-shadow .25s}
+.card:hover{transform:translateY(-4px); border-color:var(--accent); box-shadow:0 10px 24px -14px var(--accent)}
+.card h3{font-size:22px; font-weight:700}
+.card .meta{display:flex; flex-wrap:wrap; gap:6px}
+.card .tools{margin-top:auto; padding-top:12px; border-top:1px solid var(--line-soft); font-family:var(--font-mono); font-size:12px; color:var(--muted)}
+.pill{display:inline-block; font-family:var(--font-mono); font-size:12px; font-weight:500; padding:3px 9px; border-radius:999px; white-space:nowrap}
+.pill.ok{background:var(--ok-bg); color:var(--ok)}
+.pill.warn{background:var(--warn-bg); color:var(--warn)}
+.pill.bad{background:var(--bad-bg); color:var(--bad)}
+.pill.muted{background:var(--line-soft); color:var(--muted)}
+.more{margin-top:28px; display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr)); gap:16px}
+.more div{padding:16px 0; border-top:2px solid var(--ink)}
+.more h3{font-size:18px; font-weight:700; margin-bottom:6px}
+.more p{color:var(--muted); font-size:15px}
+
+/* ai */
+.ai{display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr)); gap:16px}
+.ai .item{padding:20px 0; border-top:2px solid var(--ink)}
+.ai h3{font-size:20px; font-weight:700; margin-bottom:8px}
+.ai p{color:var(--muted); font-size:15px}
+.rule{margin-top:28px; padding:20px 22px; background:var(--accent-soft); border-radius:6px; font-family:var(--font-display); font-size:clamp(20px,2.6vw,26px); font-weight:600; line-height:1.25; text-wrap:balance}
+
+/* beyond work + certs */
+.beyond{display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr)); gap:14px}
+.beyond div{background:var(--surface); border:1px solid var(--line); border-radius:6px; padding:18px; transition:transform .25s, border-color .25s}
+.beyond div:hover{transform:translateY(-3px); border-color:var(--accent)}
+.beyond h3{font-size:18px; font-weight:700; margin-bottom:6px}
+.beyond p{font-size:14px; color:var(--muted)}
+.certs{display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr)); gap:0; border:1px solid var(--line); border-radius:6px; background:var(--surface)}
+.cert{display:grid; grid-template-columns:28px minmax(0,1fr); gap:12px; padding:14px 16px; border-top:1px solid var(--line-soft); align-items:start; transition:background .2s}
+.cert:hover{background:var(--accent-soft)}
+.cert .tick{width:20px; height:20px}
+.cert b{display:block; font-weight:600; font-size:15px; line-height:1.35}
+.cert span{font-family:var(--font-mono); font-size:12px; color:var(--muted)}
+
+/* lab */
+.tabs{display:flex; flex-wrap:wrap; gap:0; border-bottom:1px solid var(--line)}
+.tab{font:inherit; font-size:15px; font-weight:600; background:none; border:0; border-bottom:3px solid transparent; padding:12px 18px; color:var(--muted); cursor:pointer; margin-bottom:-1px}
+.tab[aria-selected="true"]{color:var(--ink); border-bottom-color:var(--accent)}
+.panel{background:var(--surface); border:1px solid var(--line); border-top:0; border-radius:0 0 6px 6px; padding:24px}
+.panel > .intro{color:var(--muted); max-width:46em; margin-bottom:18px; font-size:15px}
+textarea,input,select{font:inherit; color:var(--ink); background:var(--bg); border:1px solid var(--line); border-radius:4px; padding:8px 10px; min-width:0}
+textarea{width:100%; font-family:var(--font-mono); font-size:13px; line-height:1.5; min-height:210px; resize:vertical}
+.fields{display:flex; flex-wrap:wrap; gap:12px 16px; margin:14px 0}
+.fields label{display:grid; gap:4px; font-size:13px; color:var(--muted); font-family:var(--font-mono)}
+.fields input{width:150px; font-family:var(--font-mono); font-size:13px}
+.results{margin-top:20px; display:grid; gap:0; border:1px solid var(--line); border-radius:6px}
+.res-sum{display:flex; flex-wrap:wrap; gap:8px 18px; padding:14px 16px; background:var(--bg); border-radius:6px 6px 0 0; font-size:14px; align-items:center}
+.finding{display:grid; grid-template-columns:84px minmax(0,1fr); gap:6px 16px; padding:12px 16px; border-top:1px solid var(--line-soft); font-size:14px; align-items:start; animation:rise .4s ease backwards}
+.finding .where{font-family:var(--font-mono); font-size:12px; color:var(--muted)}
+.finding .what{min-width:0; overflow-wrap:anywhere}
+.finding .what b{font-weight:600}
+.clean{padding:16px; font-size:14px; color:var(--ok)}
+.scroll{overflow-x:auto; border:1px solid var(--line); border-radius:6px}
+table{border-collapse:collapse; width:100%; min-width:720px; font-size:14px}
+th{font-family:var(--font-mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); text-align:left; padding:10px 8px; background:var(--bg); border-bottom:1px solid var(--line); white-space:nowrap}
+td{padding:6px 6px; border-top:1px solid var(--line-soft); vertical-align:middle}
+td input,td select{width:100%; padding:6px 8px; font-size:14px; background:transparent; border-color:transparent}
+td input:hover,td select:hover,td input:focus,td select:focus{border-color:var(--line); background:var(--bg)}
+td.stat2{white-space:nowrap; padding-inline:8px}
+.bar{display:flex; flex-wrap:wrap; gap:10px 16px; align-items:center; margin-top:14px}
+.bar .count{font-size:14px; color:var(--muted)}
+.note{margin-top:14px; font-size:13px; color:var(--muted)}
+.xbtn{background:none; border:0; color:var(--muted); cursor:pointer; font-size:18px; line-height:1; padding:4px 8px; border-radius:4px}
+.xbtn:hover{color:var(--bad)}
+.sr{position:absolute; left:-9999px}
+
+/* contact */
+.contact{display:grid; gap:0; max-width:620px; border:1px solid var(--line); border-radius:6px; background:var(--surface)}
+.crow{display:flex; flex-wrap:wrap; gap:8px 16px; align-items:center; justify-content:space-between; padding:14px 18px; border-top:1px solid var(--line-soft)}
+.crow:first-child{border-top:0}
+.crow .val{overflow-wrap:anywhere; min-width:0; user-select:all}
+.foot{margin-top:40px; color:var(--muted); font-size:13px}
+
+@media (max-width:820px){
+  .hero{grid-template-columns:1fr; gap:30px; padding-top:36px}
+  .about{grid-template-columns:1fr; gap:28px}
+  .skills{grid-template-columns:1fr}
+  .sk-out{position:static}
+  .panel{padding:16px}
+  .finding{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none !important; transition:none !important}
+  html{scroll-behavior:auto}
+  .hero h1 .hl{background-size:100% .32em}
+  .rv-pre{opacity:1; transform:none}
+  .paper::after{display:none}
+}
+</style>
+
+<div class="progress" aria-hidden="true"><i id="prog"></i></div>
+
+<div class="wrap">
+  <header class="top">
+    <div class="brand">Reshmitha Paricha</div>
+    <nav class="nav" aria-label="Sections">
+      <a href="#about">About</a><a href="#skills">Skills</a><a href="#journey">Journey</a><a href="#work">Work</a><a href="#lab">Lab</a><a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero">
+      <div>
+        <p class="label rise" style="--d:.05s">Business Analytics graduate, Hyderabad</p>
+        <h1 style="margin-top:16px">
+          <span class="rise" style="--d:.15s">Reshmitha</span>
+          <span class="rise" style="--d:.3s"><span class="hl" style="display:inline">Paricha.</span></span>
+        </h1>
+        <p class="rotor rise" style="--d:.5s" aria-live="off"><span id="rot">I research.</span><span class="caret" aria-hidden="true"></span></p>
+        <p class="sub rise" style="--d:.65s">I turn scattered information into clear, checked answers. Data analysis, research, dashboards and websites are where I do it, with AI tools and automation helping along the way.</p>
+        <div class="actions rise" style="--d:.8s">
+          <a class="btn" href="#work">See my work</a>
+          <a class="btn ghost" href="#lab">Try my tools</a>
+        </div>
+      </div>
+      <aside class="paper rise" style="--d:.45s" aria-label="Profile summary">
+        <p class="label">Profile</p>
+        <ul class="facts">
+          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10"/><path d="M5.5 10.5l3 3 6-7" style="--d:1s"/></svg><div><span class="k">Based in</span><span class="v">Hyderabad, India</span></div></li>
+          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10"/><path d="M5.5 10.5l3 3 6-7" style="--d:1.25s"/></svg><div><span class="k">Degree</span><span class="v">BBA Business Analytics, 9.3 CGPA</span></div></li>
+          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10"/><path d="M5.5 10.5l3 3 6-7" style="--d:1.5s"/></svg><div><span class="k">College</span><span class="v">Raja Bahadur Venkata Rama Reddy College, graduated May 2026</span></div></li>
+          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10"/><path d="M5.5 10.5l3 3 6-7" style="--d:1.75s"/></svg><div><span class="k">Recognition</span><span class="v">Winner, Startup Idea Competition. NCC C Certificate.</span></div></li>
+          <li><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10"/><path d="M5.5 10.5l3 3 6-7" style="--d:2s"/></svg><div><span class="k">Toolkit</span><span class="v">Excel, SQL, Power BI, Tableau, Python</span></div></li>
+        </ul>
+      </aside>
+    </div>
+
+    <div class="marq" aria-hidden="true">
+      <div class="track" id="t1"><span>Data analysis</span><span>Power BI</span><span>Excel</span><span>SQL</span><span>Secondary research</span><span>Customer segmentation</span><span>Dashboards</span><span>AI tools</span><span>Automation</span><span>APIs</span><span>Web building</span><span>SEO writing</span><span>Tableau</span><span>Python</span></div>
+      <div class="track rev" id="t2"><span>Competitor research</span><span>Documentation</span><span>Quality review</span><span>Google Analytics 4</span><span>Shopify</span><span>Content strategy</span><span>Problem-solving</span><span>Storytelling with data</span><span>Agentic AI concepts</span><span>Stakeholder coordination</span></div>
+    </div>
+
+    <section id="about">
+      <div class="sec-head rv">
+        <p class="label">About</p>
+        <h2>I like finding things out and writing them down clearly.</h2>
+      </div>
+      <div class="about rv">
+        <div class="story">
+          <p>I finished my BBA in Business Analytics in May 2026 with a 9.3 CGPA. My degree focused on data analysis and visualisation, business intelligence, marketing analytics and statistical thinking.</p>
+          <p>Most of my work so far has been about getting from a pile of information to something a person can use. I analysed telecom churn data to find which customers were likely to leave, researched competitors and markets, built dashboards, and turned research from many sources into career guides for students.</p>
+          <p>I also build. I make websites and small tools, I work with APIs and automation, and I use AI tools to move faster. Anything an AI gives me goes back to a real source before I rely on it.</p>
+        </div>
+        <div class="stats" aria-label="Numbers">
+          <div class="stat"><b data-count="9.3" data-dec="1">9.3</b><span>CGPA, out of 10</span></div>
+          <div class="stat"><b data-count="3">3</b><span>workplaces where I have interned</span></div>
+          <div class="stat"><b data-count="10">10</b><span>completed courses and certifications</span></div>
+          <div class="stat"><b data-count="3">3</b><span>years of BBA, 2023 to 2026</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="sec-head rv">
+        <p class="label">Skills</p>
+        <h2>Pick a skill and see where I have used it</h2>
+        <p>Each one links to something I did, not a rating out of five.</p>
+      </div>
+      <div class="skills rv">
+        <div class="sk-btns" id="sk-btns" role="group" aria-label="Skills"></div>
+        <div class="sk-out" id="sk-out" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section id="journey">
+      <div class="sec-head rv">
+        <p class="label">Journey</p>
+        <h2>From the NCC parade ground to the data desk</h2>
+      </div>
+      <div class="tl" id="tl">
+        <div class="tl-fill" id="tl-fill"></div>
+        <div class="ti"><span class="when">2022 to 2024</span><h3>NCC Cadet</h3><p>Drills, camps and community service. Earned the C Certificate.</p></div>
+        <div class="ti"><span class="when">May 2023</span><h3>Started my BBA in Business Analytics</h3><p>Data analysis, visualisation, business intelligence and marketing analytics at Raja Bahadur Venkata Rama Reddy College.</p></div>
+        <div class="ti"><span class="when">May to June 2024</span><h3>Community engagement volunteer</h3><p>Helped organise community events and outreach programmes to improve accessibility and awareness.</p></div>
+        <div class="ti"><span class="when">January to March 2025</span><h3>Web development intern, iAppSys Technologies</h3><p>Worked on a real-time web project and learned how system workflows and technical requirements fit together.</p></div>
+        <div class="ti"><span class="when">April to June 2025</span><h3>Fundraising intern, animal welfare NGO</h3><p>Supported fundraising campaigns, donor outreach and resource mobilisation.</p></div>
+        <div class="ti"><span class="when">April to November 2025</span><h3>Student trainee, women-led startup programmes</h3><p>Took part in entrepreneurship and startup ecosystem programmes covering innovation, networking and business development.</p></div>
+        <div class="ti"><span class="when">2025</span><h3>Built a Shopify store, a sales dashboard and a career toolkit</h3><p>Three projects in one year: a storefront with its own copy and structure, a Power BI sales dashboard, and research guides for students with T.I.M.E Akola and WE Hub.</p></div>
+        <div class="ti"><span class="when">December 2025 to February 2026</span><h3>Content and marketing intern, Kairos Technology</h3><p>Competitor and market research, technology content, and a close look at how agentic AI solutions are built.</p></div>
+        <div class="ti"><span class="when">2025 to 2026</span><h3>Telecom churn analysis, iAppSys Technologies</h3><p>Analysed customer data to find what drives churn and built a Power BI dashboard around it.</p></div>
+        <div class="ti milestone"><span class="when">May 2026</span><h3>Graduated with a 9.3 CGPA</h3><p>BBA in Business Analytics, complete.</p></div>
+      </div>
+    </section>
+
+    <section id="work">
+      <div class="sec-head rv">
+        <p class="label">Work</p>
+        <h2>Projects I am glad to talk through</h2>
+      </div>
+      <div class="cards">
+        <article class="card rv">
+          <div class="meta"><span class="pill muted">iAppSys Technologies</span><span class="pill muted">Analytics</span></div>
+          <h3>Telecom customer churn analysis</h3>
+          <p>Analysed telecom customer data to find what makes customers leave. Segmented customers by behaviour to spot high-risk groups. Built a Power BI dashboard comparing churn by internet service, contract type and tenure, and wrote up recommendations for retention.</p>
+          <p class="tools">Power BI, data analysis, customer segmentation</p>
+        </article>
+        <article class="card rv">
+          <div class="meta"><span class="pill muted">Kairos Technology</span><span class="pill muted">Dec 2025 to Feb 2026</span></div>
+          <h3>Market research and technology content</h3>
+          <p>Researched competitors and market trends from secondary sources and summarised where the team could position itself. Wrote and edited technology blogs and social posts to brand and SEO guidelines, and learned how agentic AI solutions are architected.</p>
+          <p class="tools">Competitor research, SEO, content, agentic AI</p>
+        </article>
+        <article class="card rv">
+          <div class="meta"><span class="pill muted">T.I.M.E Akola and WE Hub</span><span class="pill muted">2025</span></div>
+          <h3>Career toolkit for students</h3>
+          <p>Researched career options, the skills each one needs, and common interview questions. Organised everything into career-mapping guides and learning resources that students can follow step by step.</p>
+          <p class="tools">Research, structuring, guides</p>
+        </article>
+        <article class="card rv">
+          <div class="meta"><span class="pill muted">Power BI</span><span class="pill muted">2025</span></div>
+          <h3>Sales performance dashboard</h3>
+          <p>Built an interactive dashboard of regional sales KPIs and trends so that the next decision could rest on the numbers.</p>
+          <p class="tools">Power BI, data visualisation</p>
+        </article>
+      </div>
+      <div class="more rv">
+        <div><h3>Sendriya Life storefront</h3><p>A Shopify store with the navigation, collections, product descriptions and FAQs shaped around the customer's path.</p></div>
+        <div><h3>Playschool blog for parents</h3><p>Blog posts for parents choosing a playschool, written with keyword research and structured for easy reading.</p></div>
+        <div><h3>Zestro stall posters</h3><p>Two posters for a food stall: a curiosity teaser, and a scan-to-explore menu poster with a three-step call to action.</p></div>
+      </div>
+    </section>
+
+    <section id="ai">
+      <div class="sec-head rv">
+        <p class="label">AI and automation</p>
+        <h2>Faster with AI, and still checked</h2>
+      </div>
+      <div class="ai rv">
+        <div class="item"><h3>Research with AI tools</h3><p>First-pass summaries, comparisons and draft documentation. Each fact goes back to a primary source before I use it.</p></div>
+        <div class="item"><h3>Automation and APIs</h3><p>I connect services through APIs and automation workflows to remove steps that people repeat by hand.</p></div>
+        <div class="item"><h3>Building for the web</h3><p>I build websites, including this one, and small working tools like the three in the Lab.</p></div>
+      </div>
+      <p class="rule rv">I do not pass on a number, rule or date until I can name its source and the day I checked it.</p>
+    </section>
+
+    <section id="beyond">
+      <div class="sec-head rv">
+        <p class="label">Beyond work</p>
+        <h2>Outside the spreadsheets</h2>
+      </div>
+      <div class="beyond rv">
+        <div><h3>Startup Idea Competition winner</h3><p>Won the competition run by the Institution Innovation Council at my college.</p></div>
+        <div><h3>NCC C Certificate</h3><p>Two years as a cadet, with drills, camps and community service.</p></div>
+        <div><h3>Fundraising for animals</h3><p>Campaigns, donor outreach and resource mobilisation for an animal welfare NGO.</p></div>
+        <div><h3>Community volunteer</h3><p>Events and outreach to make community resources easier to reach.</p></div>
+      </div>
+    </section>
+
+    <section id="certs">
+      <div class="sec-head rv">
+        <p class="label">Learning</p>
+        <h2>Ten courses, all completed</h2>
+      </div>
+      <div class="certs rv" id="certs"></div>
+    </section>
+
+    <section id="lab">
+      <div class="sec-head rv">
+        <p class="label">Lab</p>
+        <h2>Three small tools I built to practise checking data</h2>
+        <p>Each opens with example data so you can see it work, then replace it with your own. Everything runs in your browser. Nothing is stored or sent.</p>
+      </div>
+
+      <div class="tabs" role="tablist" aria-label="Lab tools">
+        <button class="tab" role="tab" id="tab-check" aria-controls="panel-check" aria-selected="true">Data Accuracy Checker</button>
+        <button class="tab" role="tab" id="tab-test" aria-controls="panel-test" aria-selected="false" tabindex="-1">Test Case Log</button>
+        <button class="tab" role="tab" id="tab-src" aria-controls="panel-src" aria-selected="false" tabindex="-1">Source Log</button>
+      </div>
+
+      <div class="panel" role="tabpanel" id="panel-check" aria-labelledby="tab-check">
+        <p class="intro">Paste a table as CSV. The checker flags blank cells, duplicate rows, repeated IDs with different data, stray spaces, inconsistent spelling, numeric outliers and arithmetic that does not reconcile. The first column is treated as the ID.</p>
+        <label for="csv-in" class="label">CSV input (example payroll extract)</label>
+        <textarea id="csv-in" spellcheck="false"></textarea>
+        <div class="fields">
+          <label for="rc-a">Reconcile: column A<input id="rc-a" value="gross_pay"></label>
+          <label for="rc-b">minus column B<input id="rc-b" value="deductions"></label>
+          <label for="rc-c">equals column C<input id="rc-c" value="net_pay"></label>
+          <button class="btn small" id="run-check" type="button" style="align-self:end">Run checks</button>
+        </div>
+        <div class="results" id="check-out" aria-live="polite"></div>
+      </div>
+
+      <div class="panel" role="tabpanel" id="panel-test" aria-labelledby="tab-test" hidden>
+        <p class="intro">Write a case, run it by hand, and type the actual result. The status updates itself: numbers match within half a cent, text matches ignoring case. Leave Actual empty for a case you have not run. The rows below are examples for a simple net pay calculation.</p>
+        <div class="scroll"><table id="tc-table">
+          <thead><tr><th>ID</th><th>Scenario</th><th>Input</th><th>Expected</th><th>Actual</th><th>Status</th><th><span class="sr">Remove</span></th></tr></thead>
+          <tbody></tbody>
+        </table></div>
+        <div class="bar">
+          <button class="btn small" id="tc-add" type="button">Add test case</button>
+          <button class="btn small ghost" id="tc-copy" type="button">Copy as CSV</button>
+          <span class="count" id="tc-sum"></span>
+        </div>
+      </div>
+
+      <div class="panel" role="tabpanel" id="panel-src" aria-labelledby="tab-src" hidden>
+        <p class="intro">Log each claim with where it came from. A claim counts as Verified only when at least one source is official and at least two sources agree. Rows with the same claim text are grouped. The rows below are placeholders, not real legal findings.</p>
+        <div class="scroll"><table id="src-table">
+          <thead><tr><th>Claim</th><th>Jurisdiction</th><th>Source</th><th>Source type</th><th>Date checked</th><th>Claim status</th><th><span class="sr">Remove</span></th></tr></thead>
+          <tbody></tbody>
+        </table></div>
+        <div class="bar">
+          <button class="btn small" id="src-add" type="button">Add source</button>
+          <button class="btn small ghost" id="src-copy" type="button">Copy as CSV</button>
+          <span class="count" id="src-sum"></span>
+        </div>
+        <p class="note">Type the same claim text on a new row to add a second source to it.</p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="sec-head rv">
+        <p class="label">Contact</p>
+        <h2>Say hello</h2>
+        <p>Email is the fastest way to reach me.</p>
+      </div>
+      <div class="contact rv">
+        <div class="crow"><div><div class="label">Email</div><div class="val">reshmitha1279@gmail.com</div></div><button class="btn small ghost" type="button" data-copy="reshmitha1279@gmail.com">Copy</button></div>
+        <div class="crow"><div><div class="label">Phone</div><div class="val">+91 72078 55367</div></div><button class="btn small ghost" type="button" data-copy="+91 72078 55367">Copy</button></div>
+        <div class="crow"><div><div class="label">LinkedIn</div><div class="val">linkedin.com/in/reshmithaparicha</div></div><a class="btn small ghost" href="https://linkedin.com/in/reshmithaparicha" target="_blank" rel="noopener">Open</a></div>
+      </div>
+      <p class="foot">Hyderabad, India. Example rows in the Lab are placeholders and do not describe real data or real law.</p>
+    </section>
+  </main>
+</div>
+
+<script>
+(function(){
+  function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+  function $(id){return document.getElementById(id)}
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- hero rotator ---------- */
+  var phrases=['I research.','I check the numbers.','I analyse data.','I build for the web.','I use AI, then verify it.'];
+  var pi=0,rot=$('rot');
+  if(!reduce){
+    setInterval(function(){
+      rot.classList.add('out');
+      setTimeout(function(){pi=(pi+1)%phrases.length;rot.textContent=phrases[pi];rot.classList.remove('out')},360);
+    },2600);
+  }
+
+  /* ---------- marquee: duplicate content for a seamless loop ---------- */
+  ['t1','t2'].forEach(function(id){var t=$(id);t.innerHTML=t.innerHTML+t.innerHTML});
+
+  /* ---------- certifications ---------- */
+  var CERTS=[
+    ['Content-Led SEO with Brian Dean','Semrush Academy'],
+    ['Google Analytics 4','Udemy'],
+    ['Google Ads','Udemy'],
+    ['Digital Marketing','HubSpot Academy'],
+    ['Email Marketing','Great Learning'],
+    ['Data Visualisation: Empowering Business with Effective Insights','Tata Group, Forage'],
+    ['Power BI Job Simulation','PwC, Forage'],
+    ['Business Analytics Foundations: Predictive, Prescriptive and Experimental Analytics','LinkedIn Learning'],
+    ['Business Analysis Foundations','LinkedIn Learning'],
+    ['Excel Statistics Essential Training','LinkedIn Learning']
+  ];
+  $('certs').innerHTML=CERTS.map(function(c){
+    return '<div class="cert"><svg class="tick" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10"/><path d="M5.5 10.5l3 3 6-7" style="animation:none"/></svg><div><b>'+esc(c[0])+'</b><span>'+esc(c[1])+'</span></div></div>';
+  }).join('');
+
+  /* ---------- skill explorer ---------- */
+  var SK=[
+    ['Power BI',['Telecom churn dashboard at iAppSys: churn by internet service, contract and tenure.','Regional sales performance dashboard of KPIs and trends.','PwC Power BI job simulation on Forage.']],
+    ['Excel',['Used in analysis and project work, including the Shopify storefront project.','LinkedIn Learning: Excel Statistics Essential Training.']],
+    ['SQL',['Part of the analytics toolkit from my BBA studies, alongside Excel and Power BI.']],
+    ['Tableau',['Part of my analytics toolkit.','Tata Group data visualisation simulation on Forage.']],
+    ['Python',['Part of my toolkit for data work.']],
+    ['Research',['Competitor and market research at Kairos Technology, from secondary sources.','Career options, skills and interview questions researched for the student toolkit.','The Source Log in the Lab: a tool for tracking where each claim came from.']],
+    ['SEO and content',['Technology blogs and social posts at Kairos, written to brand and SEO guidelines.','Playschool blog for parents with keyword strategy.','Semrush Academy: Content-Led SEO.']],
+    ['AI tools',['Studied agentic AI solution architecture and implementation approaches at Kairos.','I use AI for first-pass research and drafting, then trace each fact to a source.']],
+    ['Automation and APIs',['Connecting services through APIs and automation workflows to remove repeated manual steps.']],
+    ['Web building',['This portfolio and the three tools in its Lab.','Web development internship at iAppSys Technologies.','Site structure for a Shopify storefront.']],
+    ['Shopify',['Sendriya Life storefront: navigation, collections, content hierarchy, product copy and FAQs.']],
+    ['Google Analytics 4',['Google Analytics 4 and Google Ads courses on Udemy.','HubSpot Academy digital marketing certification.']]
+  ];
+  var skBtns=$('sk-btns'),skOut=$('sk-out');
+  function showSkill(i){
+    [].forEach.call(skBtns.children,function(b,j){b.setAttribute('aria-pressed',j===i?'true':'false')});
+    skOut.innerHTML='<p class="label">Where I have used it</p><h3>'+esc(SK[i][0])+'</h3><ul>'+SK[i][1].map(function(t){return '<li>'+esc(t)+'</li>'}).join('')+'</ul>';
+  }
+  SK.forEach(function(s,i){
+    var b=document.createElement('button');b.type='button';b.className='sk';b.textContent=s[0];b.setAttribute('aria-pressed','false');
+    b.addEventListener('click',function(){showSkill(i)});skBtns.appendChild(b);
+  });
+  showSkill(0);
+
+  /* ---------- scroll: progress, timeline, reveals, counters ---------- */
+  var prog=$('prog'),items=[].slice.call(document.querySelectorAll('.ti')),tl=$('tl'),fill=$('tl-fill');
+  function onScroll(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    prog.style.transform='scaleX('+(h>0?Math.min(1,window.scrollY/h):0)+')';
+    var vh=window.innerHeight,line=vh*0.72,r=tl.getBoundingClientRect();
+    items.forEach(function(it){var t=it.getBoundingClientRect().top;it.classList.toggle('off',t>line)});
+    var p=(line-r.top)/r.height;p=Math.max(0.02,Math.min(1,p));
+    fill.style.transform='scaleY('+p+')';
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  window.addEventListener('resize',onScroll);
+  onScroll();
+
+  var revs=[].slice.call(document.querySelectorAll('.rv'));
+  if('IntersectionObserver' in window&&!reduce){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){if(e.isIntersecting){e.target.classList.remove('rv-pre');io.unobserve(e.target)}});
+    },{threshold:0.08});
+    revs.forEach(function(el){
+      if(el.getBoundingClientRect().top>window.innerHeight){el.classList.add('rv-pre');io.observe(el)}
+    });
+  }
+
+  var counters=[].slice.call(document.querySelectorAll('[data-count]'));
+  function runCount(el){
+    var end=parseFloat(el.getAttribute('data-count')),dec=parseInt(el.getAttribute('data-dec')||'0',10),t0=null,dur=1200;
+    function step(ts){
+      if(t0===null)t0=ts;var p=Math.min(1,(ts-t0)/dur),e=1-Math.pow(1-p,3);
+      el.textContent=(end*e).toFixed(dec);
+      if(p<1)requestAnimationFrame(step);else el.textContent=end.toFixed(dec);
+    }
+    requestAnimationFrame(step);
+  }
+  if('IntersectionObserver' in window&&!reduce){
+    var co=new IntersectionObserver(function(es){
+      es.forEach(function(e){if(e.isIntersecting){runCount(e.target);co.unobserve(e.target)}});
+    },{threshold:0.6});
+    counters.forEach(function(c){co.observe(c)});
+  }
+
+  /* ---------- tabs ---------- */
+  var tabs=[].slice.call(document.querySelectorAll('.tab'));
+  function selectTab(t){
+    tabs.forEach(function(x){
+      var on=x===t;
+      x.setAttribute('aria-selected',on?'true':'false');
+      x.tabIndex=on?0:-1;
+      $(x.getAttribute('aria-controls')).hidden=!on;
+    });
+  }
+  tabs.forEach(function(t,i){
+    t.addEventListener('click',function(){selectTab(t)});
+    t.addEventListener('keydown',function(e){
+      var n=null;
+      if(e.key==='ArrowRight')n=tabs[(i+1)%tabs.length];
+      if(e.key==='ArrowLeft')n=tabs[(i-1+tabs.length)%tabs.length];
+      if(n){e.preventDefault();selectTab(n);n.focus()}
+    });
+  });
+
+  /* ---------- copy ---------- */
+  function copyText(text,btn){
+    var o=btn.textContent;
+    var done=function(){btn.textContent='Copied';setTimeout(function(){btn.textContent=o},1400)};
+    var fail=function(){btn.textContent='Copy not available';setTimeout(function(){btn.textContent=o},1800)};
+    try{
+      navigator.clipboard.writeText(text).then(done,fail);
+    }catch(e){fail()}
+  }
+  [].forEach.call(document.querySelectorAll('[data-copy]'),function(b){
+    b.addEventListener('click',function(){copyText(b.getAttribute('data-copy'),b)});
+  });
+
+  /* ---------- Tool 1: Data Accuracy Checker ---------- */
+  var SAMPLE_CSV=[
+    'employee_id,name,country,gross_pay,deductions,net_pay',
+    'E101,Asha Rao,India,52000,6200,45800',
+    'E102,Liam Chen,Singapore,61000,7100,53900',
+    'E103,Meera Iyer,india,48000,5400,42500',
+    'E104,Sam Okoye ,Nigeria,,3900,',
+    'E101,Asha Rao,India,52000,6200,45800',
+    'E106,Lucia Gomez,Spain,58000,7000,51000',
+    'E107,Tom Brandt,Germany,5900000,8100,5891900',
+    'E102,Noah Patel,India,50000,5800,44200'
+  ].join('\n');
+  $('csv-in').value=SAMPLE_CSV;
+
+  function parseCSV(t){
+    var rows=[],row=[],f='',q=false,i,c;
+    for(i=0;i<t.length;i++){
+      c=t[i];
+      if(q){
+        if(c==='"'){ if(t[i+1]==='"'){f+='"';i++} else q=false }
+        else f+=c;
+      }else{
+        if(c==='"')q=true;
+        else if(c===','){row.push(f);f=''}
+        else if(c==='\n'||c==='\r'){
+          if(c==='\r'&&t[i+1]==='\n')i++;
+          row.push(f);rows.push(row);row=[];f='';
+        }else f+=c;
+      }
+    }
+    if(f!==''||row.length){row.push(f);rows.push(row)}
+    return rows.filter(function(r){return !(r.length===1&&r[0].trim()==='')});
+  }
+  function isNum(s){return s.trim()!==''&&isFinite(Number(s.trim().replace(/,/g,'')))}
+  function num(s){return Number(s.trim().replace(/,/g,''))}
+  function quantile(sorted,p){
+    var idx=(sorted.length-1)*p,lo=Math.floor(idx),hi=Math.ceil(idx);
+    return sorted[lo]+(sorted[hi]-sorted[lo])*(idx-lo);
+  }
+  function fmt(n){return Number(n.toFixed(2)).toLocaleString('en-IN')}
+
+  function runChecks(){
+    var text=$('csv-in').value,rows=parseCSV(text),out=$('check-out'),F=[];
+    if(rows.length<2){out.innerHTML='<div class="clean" style="color:var(--muted)">Paste a header row and at least one data row.</div>';return}
+    var head=rows[0].map(function(h){return h.trim()}),data=rows.slice(1),nc=head.length;
+    function idOf(r){return (r[0]||'').trim()||'no ID'}
+    function add(sev,row,msg){F.push({sev:sev,row:row,msg:msg})}
+
+    data.forEach(function(r,i){
+      if(r.length!==nc)add('error',i+1,'Has <b>'+r.length+'</b> fields, header has <b>'+nc+'</b>. Check for a missing or extra comma.');
+    });
+    data.forEach(function(r,i){
+      var b=[];head.forEach(function(h,j){if(r.length===nc&&(r[j]||'').trim()==='')b.push(h)});
+      if(b.length)add('warn',i+1,'<b>'+esc(idOf(r))+'</b> has blank '+b.map(esc).join(', ')+'.');
+    });
+    var seen={};
+    data.forEach(function(r,i){
+      var k=JSON.stringify(r.map(function(x){return x.trim()}));
+      if(seen[k]!==undefined)add('error',i+1,'Exact duplicate of data row <b>'+seen[k]+'</b> (<b>'+esc(idOf(r))+'</b>).');
+      else seen[k]=i+1;
+    });
+    var byId={};
+    data.forEach(function(r,i){
+      var id=idOf(r);if(id==='no ID')return;
+      var k=JSON.stringify(r.map(function(x){return x.trim()}));
+      (byId[id]=byId[id]||[]).push({i:i+1,k:k});
+    });
+    Object.keys(byId).forEach(function(id){
+      var g=byId[id],distinct={};g.forEach(function(x){distinct[x.k]=1});
+      if(Object.keys(distinct).length>1){
+        add('error',g[g.length-1].i,'ID <b>'+esc(id)+'</b> appears on data rows '+g.map(function(x){return x.i}).join(', ')+' with different details.');
+      }
+    });
+    data.forEach(function(r,i){
+      var w=[];head.forEach(function(h,j){var v=r[j]||'';if(v!==''&&v!==v.trim())w.push(h)});
+      if(w.length)add('warn',i+1,'Leading or trailing space in '+w.map(esc).join(', ')+' for <b>'+esc(idOf(r))+'</b>.');
+    });
+    head.forEach(function(h,j){
+      var vals=data.map(function(r){return (r[j]||'').trim()}).filter(function(v){return v!==''&&!isNum(v)});
+      var distinct={};vals.forEach(function(v){distinct[v]=1});
+      var keys=Object.keys(distinct);
+      if(keys.length<2||keys.length>30)return;
+      var groups={};keys.forEach(function(v){(groups[v.toLowerCase()]=groups[v.toLowerCase()]||[]).push(v)});
+      Object.keys(groups).forEach(function(g){
+        if(groups[g].length>1)add('warn','col','Column <b>'+esc(h)+'</b> spells one value several ways: '+groups[g].map(function(x){return '&ldquo;'+esc(x)+'&rdquo;'}).join(' and ')+'.');
+      });
+    });
+    head.forEach(function(h,j){
+      var cells=data.map(function(r,i){return {v:(r[j]||'').trim(),i:i+1,r:r}}).filter(function(c){return c.v!==''});
+      var nums=cells.filter(function(c){return isNum(c.v)});
+      if(cells.length<5||nums.length/cells.length<0.8)return;
+      cells.filter(function(c){return !isNum(c.v)}).forEach(function(c){
+        add('error',c.i,'Column <b>'+esc(h)+'</b> is numeric but holds &ldquo;'+esc(c.v)+'&rdquo; for <b>'+esc(idOf(c.r))+'</b>.');
+      });
+      if(nums.length>=5){
+        var s=nums.map(function(c){return num(c.v)}).sort(function(a,b){return a-b});
+        var q1=quantile(s,.25),q3=quantile(s,.75),iqr=q3-q1;
+        if(iqr>0){
+          var lo=q1-1.5*iqr,hi=q3+1.5*iqr;
+          nums.forEach(function(c){
+            var n=num(c.v);
+            if(n<lo||n>hi)add('warn',c.i,'<b>'+esc(h)+'</b> value <b>'+fmt(n)+'</b> for <b>'+esc(idOf(c.r))+'</b> sits far outside the usual range ('+fmt(lo)+' to '+fmt(hi)+'). Confirm it is not a typo.');
+          });
+        }
+      }
+    });
+    var a=head.indexOf($('rc-a').value.trim()),b=head.indexOf($('rc-b').value.trim()),c3=head.indexOf($('rc-c').value.trim());
+    var recNote='';
+    if(a>-1&&b>-1&&c3>-1){
+      data.forEach(function(r,i){
+        if(r.length!==nc)return;
+        if(isNum(r[a]||'')&&isNum(r[b]||'')&&isNum(r[c3]||'')){
+          var exp=num(r[a])-num(r[b]),got=num(r[c3]);
+          if(Math.abs(exp-got)>0.005)add('error',i+1,'<b>'+esc(head[a])+'</b> minus <b>'+esc(head[b])+'</b> should give <b>'+fmt(exp)+'</b>, but <b>'+esc(head[c3])+'</b> is <b>'+fmt(got)+'</b> for <b>'+esc(idOf(r))+'</b>.');
+        }
+      });
+    }else{
+      recNote=' Reconcile check skipped: one of the three column names does not match the header.';
+    }
+
+    var errs=F.filter(function(x){return x.sev==='error'}).length,warns=F.length-errs;
+    F.sort(function(x,y){
+      if(x.sev!==y.sev)return x.sev==='error'?-1:1;
+      var xr=x.row==='col'?0:x.row,yr=y.row==='col'?0:y.row;return xr-yr;
+    });
+    var html='<div class="res-sum"><span class="tag">'+data.length+' rows &times; '+nc+' columns</span>'+
+      '<span class="pill '+(errs?'bad':'ok')+'">'+errs+' error'+(errs===1?'':'s')+'</span>'+
+      '<span class="pill '+(warns?'warn':'ok')+'">'+warns+' to review</span>'+(recNote?'<span class="tag">'+recNote+'</span>':'')+'</div>';
+    if(!F.length)html+='<div class="clean">No issues found by these checks. They do not prove the data is right.</div>';
+    F.forEach(function(x,i){
+      html+='<div class="finding" style="animation-delay:'+Math.min(i*0.05,0.5)+'s"><div class="where">'+(x.row==='col'?'Column':'Data row '+x.row)+'<br><span class="pill '+(x.sev==='error'?'bad':'warn')+'" style="margin-top:4px">'+(x.sev==='error'?'Error':'Review')+'</span></div><div class="what">'+x.msg+'</div></div>';
+    });
+    out.innerHTML=html;
+  }
+  var tmr;
+  function later(){clearTimeout(tmr);tmr=setTimeout(runChecks,250)}
+  $('csv-in').addEventListener('input',later);
+  ['rc-a','rc-b','rc-c'].forEach(function(id){$(id).addEventListener('input',later)});
+  $('run-check').addEventListener('click',runChecks);
+  runChecks();
+
+  /* ---------- Tool 2: Test Case Log ---------- */
+  var TC=[
+    {id:'TC-01',sc:'Net pay after a 10% deduction',inp:'Gross 50,000',exp:'45,000',act:'45000'},
+    {id:'TC-02',sc:'Result rounds to two decimals',inp:'Gross 12,345.67',exp:'11,111.10',act:'11,111.11'},
+    {id:'TC-03',sc:'Zero gross pay',inp:'Gross 0',exp:'0',act:''},
+    {id:'TC-04',sc:'Negative gross pay is rejected',inp:'Gross -500',exp:'Error shown',act:'error shown'}
+  ];
+  function tcStatus(t){
+    if(t.act.trim()==='')return 'Not run';
+    var e=t.exp.trim(),a=t.act.trim();
+    if(isNum(e)&&isNum(a))return Math.abs(num(e)-num(a))<0.005?'Pass':'Fail';
+    return e.toLowerCase()===a.toLowerCase()?'Pass':'Fail';
+  }
+  function pillFor(s){return s==='Pass'?'ok':s==='Fail'?'bad':'muted'}
+  function tcSummary(){
+    var p=0,f=0,n=0;TC.forEach(function(t){var s=tcStatus(t);if(s==='Pass')p++;else if(s==='Fail')f++;else n++});
+    $('tc-sum').textContent=TC.length+' cases: '+p+' pass, '+f+' fail, '+n+' not run';
+  }
+  function tcRender(){
+    var tb=$('tc-table').querySelector('tbody');tb.innerHTML='';
+    TC.forEach(function(t,i){
+      var tr=document.createElement('tr');
+      var fields=[['id','ID','90px'],['sc','Scenario','220px'],['inp','Input','140px'],['exp','Expected','120px'],['act','Actual','120px']];
+      fields.forEach(function(f){
+        var td=document.createElement('td'),inp=document.createElement('input');
+        inp.value=t[f[0]];inp.setAttribute('aria-label',f[1]+' for test case '+(i+1));inp.style.minWidth=f[2];
+        inp.addEventListener('input',function(){
+          t[f[0]]=inp.value;var s=tcStatus(t),st=tr.querySelector('.stat2 span');
+          st.textContent=s;st.className='pill '+pillFor(s);tcSummary();
+        });
+        td.appendChild(inp);tr.appendChild(td);
+      });
+      var s=tcStatus(t),std=document.createElement('td');std.className='stat2';
+      std.innerHTML='<span class="pill '+pillFor(s)+'">'+s+'</span>';tr.appendChild(std);
+      var xd=document.createElement('td'),x=document.createElement('button');
+      x.className='xbtn';x.type='button';x.textContent='×';x.setAttribute('aria-label','Remove test case '+(i+1));
+      x.addEventListener('click',function(){TC.splice(i,1);tcRender()});
+      xd.appendChild(x);tr.appendChild(xd);tb.appendChild(tr);
+    });
+    tcSummary();
+  }
+  $('tc-add').addEventListener('click',function(){
+    var n=TC.length+1;TC.push({id:'TC-'+(n<10?'0'+n:n),sc:'',inp:'',exp:'',act:''});tcRender();
+    var rows=$('tc-table').querySelectorAll('tbody tr');rows[rows.length-1].querySelectorAll('input')[1].focus();
+  });
+  function csvCell(v){v=String(v);return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v}
+  $('tc-copy').addEventListener('click',function(){
+    var lines=[['ID','Scenario','Input','Expected','Actual','Status'].join(',')];
+    TC.forEach(function(t){lines.push([t.id,t.sc,t.inp,t.exp,t.act,tcStatus(t)].map(csvCell).join(','))});
+    copyText(lines.join('\n'),$('tc-copy'));
+  });
+  tcRender();
+
+  /* ---------- Tool 3: Source Log ---------- */
+  var SRC=[
+    {claim:'Payroll filing is due monthly (example)',jur:'Example country',src:'Labour ministry guidance page (example)',type:'Official',date:'2026-10-16'},
+    {claim:'Payroll filing is due monthly (example)',jur:'Example country',src:'Advisory firm summary (example)',type:'Secondary',date:'2026-10-16'},
+    {claim:'Overtime is paid at 1.5 times (example)',jur:'Example country',src:'AI chat summary (example)',type:'AI summary',date:'2026-10-16'},
+    {claim:'Notice period is 30 days (example)',jur:'Example country',src:'Government gazette (example)',type:'Official',date:'2026-10-16'}
+  ];
+  var TYPES=['Official','Secondary','AI summary','Unknown'];
+  function claimKey(r){return r.claim.trim().toLowerCase()}
+  function claimStatus(r){
+    var k=claimKey(r);if(k==='')return {t:'No claim',c:'muted'};
+    var g=SRC.filter(function(x){return claimKey(x)===k&&x.src.trim()!==''});
+    if(!g.length)return {t:'No source',c:'bad'};
+    var off=g.filter(function(x){return x.type==='Official'}).length;
+    if(!off)return {t:'Needs official source',c:'bad'};
+    if(g.length>=2)return {t:'Verified',c:'ok'};
+    return {t:'Corroborate',c:'warn'};
+  }
+  function srcSummary(){
+    var keys={},ok=0,total=0;
+    SRC.forEach(function(r){var k=claimKey(r);if(k===''||keys[k])return;keys[k]=1;total++;if(claimStatus(r).t==='Verified')ok++});
+    $('src-sum').textContent=total+' claims, '+ok+' verified';
+  }
+  function srcRefreshStatus(){
+    var rows=$('src-table').querySelectorAll('tbody tr');
+    SRC.forEach(function(r,i){var s=claimStatus(r),el=rows[i].querySelector('.stat2 span');el.textContent=s.t;el.className='pill '+s.c});
+    srcSummary();
+  }
+  function srcRender(){
+    var tb=$('src-table').querySelector('tbody');tb.innerHTML='';
+    SRC.forEach(function(r,i){
+      var tr=document.createElement('tr');
+      [['claim','Claim','230px'],['jur','Jurisdiction','130px'],['src','Source','220px']].forEach(function(f){
+        var td=document.createElement('td'),inp=document.createElement('input');
+        inp.value=r[f[0]];inp.setAttribute('aria-label',f[1]+' for source '+(i+1));inp.style.minWidth=f[2];
+        inp.addEventListener('input',function(){r[f[0]]=inp.value;srcRefreshStatus()});
+        td.appendChild(inp);tr.appendChild(td);
+      });
+      var td=document.createElement('td'),sel=document.createElement('select');
+      sel.setAttribute('aria-label','Source type for source '+(i+1));
+      TYPES.forEach(function(t){var o=document.createElement('option');o.value=t;o.textContent=t;if(t===r.type)o.selected=true;sel.appendChild(o)});
+      sel.addEventListener('change',function(){r.type=sel.value;srcRefreshStatus()});
+      td.appendChild(sel);tr.appendChild(td);
+      var dd=document.createElement('td'),di=document.createElement('input');
+      di.type='date';di.value=r.date;di.setAttribute('aria-label','Date checked for source '+(i+1));di.style.minWidth='140px';
+      di.addEventListener('input',function(){r.date=di.value});
+      dd.appendChild(di);tr.appendChild(dd);
+      var s=claimStatus(r),std=document.createElement('td');std.className='stat2';
+      std.innerHTML='<span class="pill '+s.c+'">'+esc(s.t)+'</span>';tr.appendChild(std);
+      var xd=document.createElement('td'),x=document.createElement('button');
+      x.className='xbtn';x.type='button';x.textContent='×';x.setAttribute('aria-label','Remove source '+(i+1));
+      x.addEventListener('click',function(){SRC.splice(i,1);srcRender()});
+      xd.appendChild(x);tr.appendChild(xd);tb.appendChild(tr);
+    });
+    srcSummary();
+  }
+  $('src-add').addEventListener('click',function(){
+    SRC.push({claim:'',jur:'',src:'',type:'Official',date:'2026-10-16'});srcRender();
+    var rows=$('src-table').querySelectorAll('tbody tr');rows[rows.length-1].querySelector('input').focus();
+  });
+  $('src-copy').addEventListener('click',function(){
+    var lines=[['Claim','Jurisdiction','Source','Source type','Date checked','Claim status'].join(',')];
+    SRC.forEach(function(r){lines.push([r.claim,r.jur,r.src,r.type,r.date,claimStatus(r).t].map(csvCell).join(','))});
+    copyText(lines.join('\n'),$('src-copy'));
+  });
+  srcRender();
+})();
+</script>
+
+</body></html>
